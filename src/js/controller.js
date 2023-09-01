@@ -40,6 +40,8 @@ const controlRecipes = async function () {
 
     //2. Rendering recipe view
     recipeView.render(model.state.recipe);
+
+    recipeView.addHandlerDirection(controlDirection);
     // debugger;
   } catch (err) {
     console.error(err);
@@ -139,8 +141,9 @@ const controlAddRecipe = async function (newRecipe) {
 //     addRecipeView.renderError(err.message);
 //   }
 // };
-const newFeature = function () {
-  console.log('welcome to new site');
+const controlDirection = function () {
+  // console.log(model.state.recipe.sourceUrl);
+  window.open(model.state.recipe.sourceUrl, '_blank');
 };
 
 const init = function () {
@@ -151,6 +154,5 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  newFeature();
 };
 init();

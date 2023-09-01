@@ -38,6 +38,15 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerDirection(handler) {
+    const _parentElement = document.querySelector('.direction');
+    
+    _parentElement.addEventListener('click', function (e) {
+      e.preventDefault();
+      handler();
+    });
+  }
+
   _generateMarkup() {
     console.log(this._data.sourceUrl);
     return `
@@ -118,7 +127,7 @@ class RecipeView extends View {
         </p>
         
         <a
-          class="btn--small recipe__btn"
+          class="btn--small recipe__btn direction"
           href="${this._data.sourceUrl}"
           target="_blank"
         >
