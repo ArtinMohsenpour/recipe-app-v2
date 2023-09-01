@@ -1,6 +1,6 @@
 import icons from 'url:../../img/icons.svg';
 // import { Fraction } from '.fractional';
-import fracty, {Fracty} from "fracty";
+import fracty from 'fracty';
 import View from './View';
 
 class RecipeView extends View {
@@ -39,6 +39,7 @@ class RecipeView extends View {
   }
 
   _generateMarkup() {
+    console.log(this._data.sourceUrl);
     return `
       <figure class="recipe__fig">
         <img src="${this._data.image}" alt="${
@@ -115,10 +116,10 @@ class RecipeView extends View {
           }</span>. Please check out
           directions at their website.
         </p>
+        
         <a
           class="btn--small recipe__btn"
           href="${this._data.sourceUrl}"
-          onclick="${this._data.sourceUrl}"
           target="_blank"
         >
           <span>Directions</span>
@@ -126,6 +127,7 @@ class RecipeView extends View {
             <use href="${icons}#icon-arrow-right"></use>
           </svg>
         </a>
+        
       </div>
     `;
   }
@@ -136,7 +138,7 @@ class RecipeView extends View {
                <use href="${icons}#icon-check"></use>
            </svg>
              <div class="recipe__quantity">${
-               ing.quantity ? new fracty(ing.quantity).toString() : ''
+               ing.quantity ? fracty(ing.quantity).toString() : ''
              }</div>
              <div class="recipe__description">
                <span class="recipe__unit">${ing.unit}</span>
